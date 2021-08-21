@@ -1,13 +1,19 @@
 package com.voxloud.provisioning.service;
 
-import com.voxloud.provisioning.entity.Device;
-
 public class ConferenceProvisioningFileCreator extends ProvisioningFileCreator {
+	
+	public ConferenceProvisioningFileCreator(ProvisioningConfiguration provisioningConfiguration) {
+		super(provisioningConfiguration);
+	}
 
 	@Override
-	String getProvisioningFile(Device device) {
+	protected String getProvisioningFile(String overrideFragment) {
+		return overrideFragment;
+	}
+
+	protected String generateConfigurationString() {
 		// TODO Auto-generated method stub
-		return device.getModel().toString();
+		return null;
 	}
 
 }

@@ -12,22 +12,29 @@ public class ProvisioningServiceImpl implements ProvisioningService {
 	
 	private DeviceRepository deviceRepository;
 	
+	private ProvisioningConfiguration provisioningConfiguration;
+	
 	@Autowired
-	public ProvisioningServiceImpl(DeviceRepository deviceRepository) {
+	public ProvisioningServiceImpl(DeviceRepository deviceRepository,
+			ProvisioningConfiguration provisioningConfiguration) {
 		this.deviceRepository = deviceRepository;
+		this.provisioningConfiguration = provisioningConfiguration;
 	}
 	
     public String getProvisioningFile(String macAddress) {
     	Device device = this.deviceRepository.findByMacAddress(macAddress);
+    	if(device==null) {
+    		// Throw device not found exception
+    	}
     	ProvisioningFileCreator provisioningFileCreator = null;
     	if(device.getModel().equals(DeviceModel.DESK)) {
-    		provisioningFileCreator = new DeskProvisioningFileCreator();
+    		provisioningFileCreator = new DeskProvisioningFileCreator(this.provisioningConfiguration);
     	} else if (device.getModel().equals(DeviceModel.CONFERENCE)) {
-    		provisioningFileCreator = new ConferenceProvisioningFileCreator();
+    		provisioningFileCreator = new ConferenceProvisioningFileCreator(this.provisioningConfiguration);
     	} else {
     		return null;
     	}
-    	return provisioningFileCreator.getProvisioningFile(device);
+    	return provisioningFileCreator.getProvisioningFile(device.getOverrideFragment());
     }
     
 }
