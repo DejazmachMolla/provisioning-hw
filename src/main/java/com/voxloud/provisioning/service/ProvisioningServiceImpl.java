@@ -3,9 +3,13 @@ package com.voxloud.provisioning.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.voxloud.provisioning.config.ProvisioningConfiguration;
 import com.voxloud.provisioning.entity.Device;
 import com.voxloud.provisioning.entity.Device.DeviceModel;
 import com.voxloud.provisioning.repository.DeviceRepository;
+import com.voxloud.provisioning.service.filecreator.ConferenceProvisioningFileCreator;
+import com.voxloud.provisioning.service.filecreator.DeskProvisioningFileCreator;
+import com.voxloud.provisioning.service.filecreator.ProvisioningFileCreator;
 
 @Service
 public class ProvisioningServiceImpl implements ProvisioningService {

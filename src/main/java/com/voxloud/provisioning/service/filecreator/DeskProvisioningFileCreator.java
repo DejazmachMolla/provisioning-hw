@@ -1,5 +1,6 @@
-package com.voxloud.provisioning.service;
+package com.voxloud.provisioning.service.filecreator;
 
+import com.voxloud.provisioning.config.ProvisioningConfiguration;
 import com.voxloud.provisioning.entity.Device;
 
 public class DeskProvisioningFileCreator extends ProvisioningFileCreator {

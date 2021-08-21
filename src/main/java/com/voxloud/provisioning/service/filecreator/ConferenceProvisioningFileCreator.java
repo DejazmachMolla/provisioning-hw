@@ -1,6 +1,7 @@
-package com.voxloud.provisioning.service;
+package com.voxloud.provisioning.service.filecreator;
 
 import com.google.gson.Gson;
+import com.voxloud.provisioning.config.ProvisioningConfiguration;
 import com.voxloud.provisioning.entity.Device;
 import com.voxloud.provisioning.entity.OverrideFragment;
 
@@ -11,7 +12,7 @@ public class ConferenceProvisioningFileCreator extends ProvisioningFileCreator {
 	}
 
 	@Override
-	protected String getProvisioningFile(Device device) {
+	public String getProvisioningFile(Device device) {
 		String overrideFragment = device.getOverrideFragment();
 		Gson g = new Gson();
 		OverrideFragment of = g.fromJson(overrideFragment, OverrideFragment.class);

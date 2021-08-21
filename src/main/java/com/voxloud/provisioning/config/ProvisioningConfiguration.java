@@ -1,4 +1,4 @@
-package com.voxloud.provisioning.service;
+package com.voxloud.provisioning.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
