@@ -12,10 +12,12 @@ public class DeskProvisioningFileCreator extends ProvisioningFileCreator {
 	@Override
 	public String getProvisioningFile(Device device) {
 		String overrideFragment = device.getOverrideFragment();
-		overrideFragment.lines().forEach(line -> {
-			configurationHolder.put(line.substring(0, line.indexOf("=")), 
-					line.substring(line.indexOf("=")+1));
-		});
+		if(overrideFragment!=null) {			
+			overrideFragment.lines().forEach(line -> {
+				configurationHolder.put(line.substring(0, line.indexOf("=")), 
+						line.substring(line.indexOf("=")+1));
+			});
+		}
 		addUsenameAndPassword(device);
 		addPropertyConfigurations();
 		return generateConfigurationString();

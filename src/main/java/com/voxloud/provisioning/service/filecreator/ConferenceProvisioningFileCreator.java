@@ -15,10 +15,12 @@ public class ConferenceProvisioningFileCreator extends ProvisioningFileCreator {
 	public String getProvisioningFile(Device device) {
 		String overrideFragment = device.getOverrideFragment();
 		Gson g = new Gson();
-		OverrideFragment of = g.fromJson(overrideFragment, OverrideFragment.class);
-		configurationHolder.put("domain", of.getDomain());
-		configurationHolder.put("port", of.getPort());
-		configurationHolder.put("timeout", of.getTimeout());
+		if(overrideFragment!=null) {			
+			OverrideFragment of = g.fromJson(overrideFragment, OverrideFragment.class);
+			configurationHolder.put("domain", of.getDomain());
+			configurationHolder.put("port", of.getPort());
+			configurationHolder.put("timeout", of.getTimeout());
+		}
 		addUsenameAndPassword(device);
 		addPropertyConfigurations();
 		return generateConfigurationString(g);
