@@ -34,7 +34,7 @@ public class ProvisioningServiceImpl implements ProvisioningService {
     	} else {
     		return null;
     	}
-    	return provisioningFileCreator.getProvisioningFile(device.getOverrideFragment());
+    	return provisioningFileCreator.getProvisioningFile(device);
     }
     
 }

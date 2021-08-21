@@ -3,11 +3,13 @@ package com.voxloud.provisioning.service;
 import java.util.HashMap;
 import java.util.Map;
 
-public abstract class ProvisioningFileCreator {	
+import com.voxloud.provisioning.entity.Device;
+
+public abstract class ProvisioningFileCreator {
 	
 	protected ProvisioningConfiguration provisioningConfiguration;
 	protected Map<String, String> configurationHolder = new HashMap<String, String>();
-	protected abstract String getProvisioningFile(String overrideFragment);
+	protected abstract String getProvisioningFile(Device device);
 	
 	public ProvisioningFileCreator(ProvisioningConfiguration provisioningConfiguration) {
 		this.provisioningConfiguration = provisioningConfiguration;

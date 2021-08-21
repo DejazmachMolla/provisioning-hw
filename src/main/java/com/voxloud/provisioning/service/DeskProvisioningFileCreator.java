@@ -1,5 +1,7 @@
 package com.voxloud.provisioning.service;
 
+import com.voxloud.provisioning.entity.Device;
+
 public class DeskProvisioningFileCreator extends ProvisioningFileCreator {
 	
 	public DeskProvisioningFileCreator(ProvisioningConfiguration provisioningConfiguration) {
@@ -7,11 +9,14 @@ public class DeskProvisioningFileCreator extends ProvisioningFileCreator {
 	}
 
 	@Override
-	public String getProvisioningFile(String overrideFragment) {
+	public String getProvisioningFile(Device device) {
+		String overrideFragment = device.getOverrideFragment();
 		overrideFragment.lines().forEach(line -> {
 			configurationHolder.put(line.substring(0, line.indexOf("=")), 
 					line.substring(line.indexOf("=")+1));
 		});
+		configurationHolder.put("username", device.getUsername());
+		configurationHolder.put("password", device.getPassword());
 		addPropertyConfigurations();
 		return generateConfigurationString();
 	}

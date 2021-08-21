@@ -1,5 +1,7 @@
 package com.voxloud.provisioning.service;
 
+import com.voxloud.provisioning.entity.Device;
+
 public class ConferenceProvisioningFileCreator extends ProvisioningFileCreator {
 	
 	public ConferenceProvisioningFileCreator(ProvisioningConfiguration provisioningConfiguration) {
@@ -7,7 +9,9 @@ public class ConferenceProvisioningFileCreator extends ProvisioningFileCreator {
 	}
 
 	@Override
-	protected String getProvisioningFile(String overrideFragment) {
+	protected String getProvisioningFile(Device device) {
+		String overrideFragment = device.getOverrideFragment();
+		
 		return overrideFragment;
 	}
 
