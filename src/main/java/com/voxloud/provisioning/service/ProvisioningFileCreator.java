@@ -23,12 +23,19 @@ public abstract class ProvisioningFileCreator {
 		if(!configurationHolder.containsKey("domain")) {
 			configurationHolder.put("domain", provisioningConfiguration.getDomain());
 		}
+		
 		if(!configurationHolder.containsKey("port")) {
 			configurationHolder.put("port", provisioningConfiguration.getPort());
 		}
+		
 		if(!configurationHolder.containsKey("codecs")) {
 			configurationHolder.put("codecs", provisioningConfiguration.getCodecs());
 		}
+	}
+	
+	protected void addUsenameAndPassword(Device device) {
+		configurationHolder.put("username", device.getUsername());
+		configurationHolder.put("password", device.getPassword());
 	}
 	
 }

@@ -15,8 +15,7 @@ public class DeskProvisioningFileCreator extends ProvisioningFileCreator {
 			configurationHolder.put(line.substring(0, line.indexOf("=")), 
 					line.substring(line.indexOf("=")+1));
 		});
-		configurationHolder.put("username", device.getUsername());
-		configurationHolder.put("password", device.getPassword());
+		addUsenameAndPassword(device);
 		addPropertyConfigurations();
 		return generateConfigurationString();
 	}
@@ -25,7 +24,7 @@ public class DeskProvisioningFileCreator extends ProvisioningFileCreator {
 	 * The method streams the HashMap containing the final configurations
 	 * and constructs a StringBuilder instance by combining the key value 
 	 * pairs with an equals operator "="
-	 * @return the final configuration to be sent for devices
+	 * @return the final configuration to be sent for Desk devices
 	 */
 	private String generateConfigurationString() {
 		StringBuilder configuration = new StringBuilder();
@@ -34,5 +33,5 @@ public class DeskProvisioningFileCreator extends ProvisioningFileCreator {
 		});
 		return configuration.toString();
 	}
-	
+
 }
