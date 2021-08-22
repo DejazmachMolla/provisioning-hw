@@ -37,44 +37,4 @@ public class Device {
         CONFERENCE,
         DESK
     }
-
-	public String getMacAddress() {
-		return macAddress;
-	}
-
-	public void setMacAddress(String macAddress) {
-		this.macAddress = macAddress;
-	}
-
-	public DeviceModel getModel() {
-		return model;
-	}
-
-	public void setModel(DeviceModel model) {
-		this.model = model;
-	}
-
-	public String getOverrideFragment() {
-		return overrideFragment;
-	}
-
-	public void setOverrideFragment(String overrideFragment) {
-		this.overrideFragment = overrideFragment;
-	}
-
-	public String getUsername() {
-		return username;
-	}
-
-	public void setUsername(String username) {
-		this.username = username;
-	}
-
-	public String getPassword() {
-		return password;
-	}
-
-	public void setPassword(String password) {
-		this.password = password;
-	}
 }
