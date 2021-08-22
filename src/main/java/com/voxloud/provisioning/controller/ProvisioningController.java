@@ -13,7 +13,9 @@ import com.voxloud.provisioning.service.ProvisioningServiceImpl;
 @RequestMapping("/api/v1")
 public class ProvisioningController {
 	private ProvisioningServiceImpl provisioningServiceImple;
-	
+	public ProvisioningController() {
+		
+	}
 	@Autowired
 	public ProvisioningController(ProvisioningServiceImpl provisioningServiceImple) {
 		this.provisioningServiceImple = provisioningServiceImple;
