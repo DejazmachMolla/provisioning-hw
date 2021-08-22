@@ -27,10 +27,9 @@ public class ProvisioningServiceImpl implements ProvisioningService {
 	}
 	
     public String getProvisioningFile(String macAddress) {
-    	Device device = this.deviceRepository.findByMacAddress(macAddress);
-    	if(device == null) {
-    		throw new NotFoundException("Device not found.");
-    	}
+    	Device device = this.deviceRepository.findByMacAddress(macAddress)
+    			.orElseThrow(() -> new NotFoundException("Device not found."));
+
     	ProvisioningFileCreator provisioningFileCreator = null;
     	if(device.getModel().equals(DeviceModel.DESK)) {
     		provisioningFileCreator = new DeskProvisioningFileCreator(this.provisioningConfiguration);
