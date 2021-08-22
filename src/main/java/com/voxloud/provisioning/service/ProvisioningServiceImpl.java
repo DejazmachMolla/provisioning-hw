@@ -33,11 +33,10 @@ public class ProvisioningServiceImpl implements ProvisioningService {
     	ProvisioningFileCreator provisioningFileCreator = null;
     	if(device.getModel().equals(DeviceModel.DESK)) {
     		provisioningFileCreator = new DeskProvisioningFileCreator(this.provisioningConfiguration);
-    	} else if (device.getModel().equals(DeviceModel.CONFERENCE)) {
-    		provisioningFileCreator = new ConferenceProvisioningFileCreator(this.provisioningConfiguration);
     	} else {
-    		return null;
+    		provisioningFileCreator = new ConferenceProvisioningFileCreator(this.provisioningConfiguration);
     	}
+    	
     	return provisioningFileCreator.getProvisioningFile(device);
     }
     

@@ -9,7 +9,5 @@ import com.voxloud.provisioning.entity.Device;
 
 @Repository
 public interface DeviceRepository extends JpaRepository<Device, String> {
-	
 	Optional<Device> findByMacAddress(String macAddress);
-	
 }
