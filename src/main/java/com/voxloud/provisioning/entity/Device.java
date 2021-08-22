@@ -6,10 +6,16 @@ import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.Id;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Entity
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
 public class Device {
 
     @Id
@@ -71,5 +77,4 @@ public class Device {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-
 }
